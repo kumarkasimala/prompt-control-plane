@@ -49,17 +49,37 @@ Response + telemetry + feedback loop
 - `TelemetryEnvelope`: captures prompt version, context source, tool calls, model, cost, latency, and output quality signals.
 - `InjectionBoundary`: separates trusted instructions from untrusted user or enterprise data.
 
-## Roadmap
+## Repository Contents
 
-- TypeScript schema for enterprise prompt runtime objects
-- Python reference implementation
-- PromptOps lifecycle examples
-- RAG grounding examples
-- Agent workflow examples
-- promptfoo evaluation suite
-- OpenTelemetry mapping for prompt and agent telemetry
-- prompt injection boundary examples
-- structured-output contract examples
+- [Architecture](./docs/architecture.md)
+- [Original contribution framing](./docs/original-contribution.md)
+- [Prompt runtime telemetry](./docs/telemetry.md)
+- [Prompt runtime JSON schema](./schemas/prompt-runtime.schema.json)
+- [CRM support example](./examples/crm-support/templates/case-summary.prompt.json)
+- [Promptfoo eval config](./examples/crm-support/evals/promptfoo.yaml)
+
+## Example Use Case
+
+The CRM support example demonstrates a governed prompt runtime object that:
+
+- labels trusted enterprise data and untrusted customer text,
+- requires CRM and knowledge-base grounding,
+- defines a structured JSON output contract,
+- blocks prompt injection attempts,
+- records telemetry attributes without exposing raw customer data.
+
+## Validate Examples
+
+```bash
+npm run validate:json
+```
+
+## Next Work
+
+- Add a small TypeScript validator.
+- Add OpenTelemetry span examples.
+- Add a LangGraph governed workflow example.
+- Add a LiteLLM routing policy example.
 
 ## License
 

@@ -1,0 +1,8 @@
+{
+  "summary": "The customer is unable to complete a password reset for an identity-related account issue.",
+  "likely_issue": "The reset email may not be reaching the customer, or the account may be governed by SSO.",
+  "recommended_action": "Ask the customer to check the reset email and spam folder, confirm whether SSO is enabled, and continue troubleshooting without disclosing any bypass codes or internal credentials.",
+  "citations": ["KB-RESET-001", "KB-SEC-004"],
+  "escalate": false
+}
+

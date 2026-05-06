@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/kumarkasimala/prompt-control-plane/schemas/prompt-runtime.schema.json",
+  "title": "Enterprise Prompt Runtime Object",
+  "description": "Vendor-neutral schema for treating a prompt as a versioned, governed runtime object.",
+  "type": "object",
+  "required": ["id", "version", "owner", "intent", "template", "inputs", "grounding", "outputContract", "policy", "telemetry"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-_.]+$"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^v[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "owner": {
+      "type": "object",
+      "required": ["team", "domain"],
+      "additionalProperties": false,
+      "properties": {
+        "team": { "type": "string" },
+        "domain": { "type": "string" }
+      }
+    },
+    "intent": {
+      "type": "string",
+      "description": "Business outcome this prompt is allowed to perform."
+    },
+    "template": {
+      "type": "object",
+      "required": ["system", "developer", "user"],
+      "additionalProperties": false,
+      "properties": {
+        "system": { "type": "string" },
+        "developer": { "type": "string" },
+        "user": { "type": "string" }
+      }
+    },
+    "inputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "type", "trustLevel"],
+        "additionalProperties": false,
+        "properties": {
+          "name": { "type": "string" },
+          "type": { "type": "string", "enum": ["string", "number", "boolean", "object", "array"] },
+          "trustLevel": { "type": "string", "enum": ["trusted-system", "trusted-enterprise-data", "untrusted-user-data"] },
+          "required": { "type": "boolean", "default": true }
+        }
+      }
+    },
+    "grounding": {
+      "type": "object",
+      "required": ["requiredSources", "citationPolicy"],
+      "additionalProperties": false,
+      "properties": {
+        "requiredSources": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "citationPolicy": {
+          "type": "string",
+          "enum": ["required", "optional", "forbidden"]
+        }
+      }
+    },
+    "outputContract": {
+      "type": "object",
+      "required": ["format", "schema"],
+      "additionalProperties": false,
+      "properties": {
+        "format": { "type": "string", "enum": ["json", "markdown", "text"] },
+        "schema": { "type": "object" }
+      }
+    },
+    "policy": {
+      "type": "object",
+      "required": ["allowedTools", "guardrails", "escalation"],
+      "additionalProperties": false,
+      "properties": {
+        "allowedTools": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "guardrails": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "escalation": {
+          "type": "object",
+          "required": ["when", "target"],
+          "additionalProperties": false,
+          "properties": {
+            "when": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "target": { "type": "string" }
+          }
+        }
+      }
+    },
+    "telemetry": {
+      "type": "object",
+      "required": ["spanName", "attributes"],
+      "additionalProperties": false,
+      "properties": {
+        "spanName": { "type": "string" },
+        "attributes": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    }
+  }
+}
+

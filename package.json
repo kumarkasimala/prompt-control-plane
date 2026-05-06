@@ -1,0 +1,12 @@
+{
+  "name": "prompt-control-plane",
+  "version": "0.1.0",
+  "private": false,
+  "description": "Reference architecture for prompt engineering systems as enterprise AI runtime infrastructure.",
+  "type": "module",
+  "scripts": {
+    "validate:json": "node scripts/validate-json.mjs"
+  },
+  "license": "MIT"
+}
+
