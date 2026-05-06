@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+title: "Prompt Control Plane"
+message: "If you use this reference architecture, please cite it using the metadata in this file."
+type: software
+authors:
+  - family-names: Kasimala
+    given-names: Kumar
+repository-code: "https://github.com/kumarkasimala/prompt-control-plane"
+url: "https://github.com/kumarkasimala/prompt-control-plane"
+abstract: "A vendor-neutral reference architecture for treating prompts, context, tools, policies, telemetry, and evaluations as governed runtime objects in enterprise AI systems."
+keywords:
+  - prompt engineering
+  - enterprise AI
+  - promptops
+  - agentic AI
+  - context engineering
+  - RAG
+  - AI observability
+license: MIT
+version: "0.1.0"
+date-released: "2026-05-06"
+

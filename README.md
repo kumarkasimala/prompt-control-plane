@@ -81,6 +81,10 @@ npm run validate:json
 - Add a LangGraph governed workflow example.
 - Add a LiteLLM routing policy example.
 
+## Citation
+
+This repository includes [CITATION.cff](./CITATION.cff) for citation metadata.
+
 ## License
 
 MIT
